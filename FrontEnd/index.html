@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Sophie Bluel - Architecte d'intérieur</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="Javascript/fonction.modal.js" defer></script>
 	<script src="Javascript/fonction.works.js" defer></script>
 	<script src="Javascript/fonction.user.js" defer></script>
 	<script src="Javascript/index.js" defer></script>
@@ -15,6 +16,18 @@
 	<script src="https://kit.fontawesome.com/b119020b21.js" crossorigin="anonymous"></script>
 </head>
 <body>
+	<dialog id="modifier-galery">
+		<div class="modal-header">
+			<button type="button" class="btn-precedent-modal"><i class="fa-solid fa-arrow-left"></i></button>
+			<button type="button" class="btn-fermer-modal"><i class="fa-solid fa-xmark"></i></button>
+		</div>
+		<div class="modal-main">
+
+		</div>
+		<div class="modal-footer">
+
+		</div>
+	</dialog>
 <header>
 	<div class="bandeauedition">
 		<p><i class="fa-regular fa-pen-to-square"></i>Mode édition</p>
@@ -44,7 +57,7 @@
 	</section>
 	<section id="portfolio">
 		<h2>Mes Projets</h2>
-		<button class="modifier"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
+		<button class="modifier modal-trigger"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
 		<div class="filtres">
 		</div>
 		<div class="gallery">

@@ -1,6 +1,3 @@
-let works = window.localStorage.getItem('works');
-let categories = window.localStorage.getItem('categories');
-
 async function getWorks () {
 	if(works === null) {
 		try {
@@ -25,10 +22,28 @@ async function getWorks () {
     }
 	else {
 		works = JSON.parse(works);
-	}
-	if(works) {
-		genererWorks(works);
-        genererFiltres(categories);
+	}	
+}
+
+async function majWorks() {
+    try {
+		
+		const reponse = await fetch("http://localhost:5678/api/works");
+
+		if (!reponse.ok) {
+			throw new Error("Problème de connexion API"); 
+
+		}
+		else {
+			works = await reponse.json();
+			const valeurworks = JSON.stringify(works);
+			window.localStorage.setItem("works", valeurworks);
+		}
+
+	} 
+	catch (erreur) {
+			
+		console.log(erreur.message);
 	}
 }
 
@@ -59,7 +74,7 @@ async function getCategories () {
 	}
 }
 
-function genererWorks(works, IdCategory){   
+function genererWorks(works, IdCategory) {   
     const divGallery = document.querySelector(".gallery");
     divGallery.innerHTML = "";
 
@@ -84,7 +99,7 @@ function genererWorks(works, IdCategory){
      }
 }
 
-function genererFiltres(categories){   
+function genererFiltres(categories) {   
     const divFiltres = document.querySelector(".filtres");
     divFiltres.innerHTML = "";
 
@@ -92,6 +107,7 @@ function genererFiltres(categories){
     buttonTousElement.type = "submit";
     buttonTousElement.id = "0";
     buttonTousElement.value = "Tous";
+    buttonTousElement.classList.add("selected");
 
     divFiltres.appendChild(buttonTousElement);
 
@@ -105,11 +121,5 @@ function genererFiltres(categories){
         buttonElement.value = category.name;
 
         divFiltres.appendChild(buttonElement);
-    }
+        }   
 }
-
-const inputs = document.querySelector(".filtres");
-inputs.addEventListener("click", (event) => {
-    IdCategory = Number(event.target.id);
-    genererWorks(works, IdCategory)
-})
