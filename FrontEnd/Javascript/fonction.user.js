@@ -6,7 +6,7 @@ function affichageUser () {
         })
         const logoutafficher = document.querySelectorAll(".filtres, .login");
         logoutafficher.forEach(element => {
-        element.style.display = "block";
+        element.style.display = "flex";
         })
     }
     else {
@@ -16,7 +16,7 @@ function affichageUser () {
         })
         const loginafficher = document.querySelectorAll(".bandeauedition, .modifier, .logout");
         loginafficher.forEach(element => {
-        element.style.display = "block";
+        element.style.display = "flex";
         })
     }
 }

@@ -3,8 +3,11 @@ let categories = window.localStorage.getItem('categories');
 let token = window.localStorage.getItem("token");
 const form = document.createElement("form");
 const modal = document.querySelector("#modifier-galery");
+const modalHeader = document.querySelector(".modal-header");
 const modalMain = document.querySelector(".modal-main");
 const modalFooter = document.querySelector(".modal-footer");
+const modalH3 = document.querySelector(".modal-h3");
+
 getCategories ();
 
 getWorks ().then(() => {
